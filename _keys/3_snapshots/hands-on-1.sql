@@ -3,10 +3,10 @@ your file products_snapshot.sql. Add the necessary Snapshot fields to the file.
 ***For the target_schema, updated it with "snapshots_(your dbt username)"
 
 --------
--- file: snapshots/products_snapshots.sql
+-- file: snapshots/products_snapshot.sql
 --------
 
-{% snapshot product_snapshot %}
+{% snapshot products_snapshot %}
 {{
   config(
     target_database='advanced_materializations',
