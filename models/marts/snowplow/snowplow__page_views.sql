@@ -1,6 +1,14 @@
+{{
+    config(
+        materialized='incremental'
+    )
+}}
 with events as (
 
     select * from {{ ref('stg_events') }}
+    {% if is_incremental() %}
+    where collector_tstamp >= (select max(max_collector_tstamp) from {{ this }})
+    {% endif %}
 
 ),
 
